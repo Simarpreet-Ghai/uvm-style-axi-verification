@@ -4,6 +4,3 @@
 # compiled simulation outputs
 *.vvp
 results/*.vvp
-
-# temporary waveform/build junk if needed
-*.log
