@@ -1,0 +1,6 @@
+results/*.vvp
+results/*.vcd
+results/*.txt
+results/*.csv
+*.log
+.DS_Store
