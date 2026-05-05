@@ -1,0 +1,626 @@
+Compile command:
+iverilog -g2012 -o /Users/simar/Documents/uvm-style-axi-verification/results/tb.vvp src/axi_regbank.sv sim/axi_driver.sv sim/axi_monitor.sv sim/scoreboard.sv sim/assertions.sv sim/coverage.sv sim/seq_lib.sv sim/rand_test.sv sim/tb_top.sv
+
+
+
+===== seq_reset PASS =====
+VCD info: dumpfile results/waveform.vcd opened for output.
+[seq_reset] START
+MON read addr=0x00000000 data=0x00000000
+PASS read addr=0x00000000 data=0x00000000
+MON read addr=0x00000004 data=0x00000000
+PASS read addr=0x00000004 data=0x00000000
+MON read addr=0x00000008 data=0x00000000
+PASS read addr=0x00000008 data=0x00000000
+MON read addr=0x0000000c data=0x00000000
+PASS read addr=0x0000000c data=0x00000000
+MON read addr=0x00000010 data=0x00000000
+PASS read addr=0x00000010 data=0x00000000
+MON read addr=0x00000014 data=0x00000000
+PASS read addr=0x00000014 data=0x00000000
+MON read addr=0x00000018 data=0x00000000
+PASS read addr=0x00000018 data=0x00000000
+MON read addr=0x0000001c data=0x00000000
+PASS read addr=0x0000001c data=0x00000000
+MON write addr=0x00000018 data=0xcafe0001
+MON write addr=0x0000001c data=0xcafe0002
+MON write addr=0x00000008 data=0x12345678
+MON write addr=0x00000000 data=0x00000002
+MON read addr=0x00000000 data=0x00000000
+PASS read addr=0x00000000 data=0x00000000
+MON read addr=0x00000008 data=0x00000000
+PASS read addr=0x00000008 data=0x00000000
+MON read addr=0x00000018 data=0x00000000
+PASS read addr=0x00000018 data=0x00000000
+MON read addr=0x0000001c data=0x00000000
+PASS read addr=0x0000001c data=0x00000000
+[seq_reset] PASS
+Result: 1/1 tests passing
+FINAL PASS
+sim/tb_top.sv:192: $finish called at 655000 (1ps)
+
+
+===== seq_all_registers PASS =====
+VCD info: dumpfile results/waveform.vcd opened for output.
+[seq_all_registers] START
+MON write addr=0x00000018 data=0x11112222
+MON read addr=0x00000018 data=0x11112222
+PASS read addr=0x00000018 data=0x11112222
+PASS scratch0 mirror expected=0x11112222 actual=0x11112222
+MON write addr=0x0000001c data=0x33334444
+MON read addr=0x0000001c data=0x33334444
+PASS read addr=0x0000001c data=0x33334444
+PASS scratch1 mirror expected=0x33334444 actual=0x33334444
+MON write addr=0x00000004 data=0xffffffff
+MON read addr=0x00000004 data=0x00000000
+PASS read addr=0x00000004 data=0x00000000
+MON write addr=0x00000000 data=0x000000a1
+MON read addr=0x00000000 data=0x00000051
+PASS read addr=0x00000000 data=0x00000051
+MON read addr=0x00000004 data=0x00000051
+PASS read addr=0x00000004 data=0x00000051
+MON write addr=0x00000008 data=0x0f0ff0f0
+MON read addr=0x00000008 data=0x0f0ff0f0
+PASS read addr=0x00000008 data=0x0f0ff0f0
+MON read addr=0x0000000c data=0xaaaaaaaa
+PASS read addr=0x0000000c data=0xaaaaaaaa
+MON write addr=0x00000010 data=0x00000001
+MON read addr=0x00000010 data=0x00000001
+PASS read addr=0x00000010 data=0x00000001
+MON read addr=0x00000014 data=0x00000001
+PASS read addr=0x00000014 data=0x00000001
+[seq_all_registers] PASS
+Result: 1/1 tests passing
+FINAL PASS
+sim/tb_top.sv:192: $finish called at 665000 (1ps)
+
+
+===== seq_irq PASS =====
+VCD info: dumpfile results/waveform.vcd opened for output.
+[seq_irq] START
+MON write addr=0x00000010 data=0x00000001
+MON write addr=0x00000000 data=0x00000001
+PASS irq before event expected=0x00000000 actual=0x00000000
+MON write addr=0x00000008 data=0xdeadbeef
+PASS irq after data event expected=0x00000001 actual=0x00000001
+MON read addr=0x00000014 data=0x00000001
+PASS read addr=0x00000014 data=0x00000001
+MON write addr=0x00000014 data=0x00000001
+PASS irq after clear expected=0x00000000 actual=0x00000000
+MON read addr=0x00000014 data=0x00000000
+PASS read addr=0x00000014 data=0x00000000
+[seq_irq] PASS
+Result: 1/1 tests passing
+FINAL PASS
+sim/tb_top.sv:192: $finish called at 395000 (1ps)
+
+
+===== seq_walk_ones PASS =====
+VCD info: dumpfile results/waveform.vcd opened for output.
+[seq_walk_ones] START
+MON write addr=0x00000000 data=0x00000001
+MON write addr=0x00000018 data=0x00000001
+MON read addr=0x00000018 data=0x00000001
+PASS read addr=0x00000018 data=0x00000001
+PASS scratch0 walking one expected=0x00000001 actual=0x00000001
+MON write addr=0x0000001c data=0xfffffffe
+MON read addr=0x0000001c data=0xfffffffe
+PASS read addr=0x0000001c data=0xfffffffe
+PASS scratch1 walking one expected=0xfffffffe actual=0xfffffffe
+MON write addr=0x00000008 data=0x00000001
+MON read addr=0x0000000c data=0x25a55a5a
+PASS read addr=0x0000000c data=0x25a55a5a
+MON write addr=0x00000018 data=0x00000002
+MON read addr=0x00000018 data=0x00000002
+PASS read addr=0x00000018 data=0x00000002
+PASS scratch0 walking one expected=0x00000002 actual=0x00000002
+MON write addr=0x0000001c data=0xfffffffd
+MON read addr=0x0000001c data=0xfffffffd
+PASS read addr=0x0000001c data=0xfffffffd
+PASS scratch1 walking one expected=0xfffffffd actual=0xfffffffd
+MON write addr=0x00000008 data=0x00000002
+MON read addr=0x0000000c data=0xe5a55a5a
+PASS read addr=0x0000000c data=0xe5a55a5a
+MON write addr=0x00000018 data=0x00000004
+MON read addr=0x00000018 data=0x00000004
+PASS read addr=0x00000018 data=0x00000004
+PASS scratch0 walking one expected=0x00000004 actual=0x00000004
+MON write addr=0x0000001c data=0xfffffffb
+MON read addr=0x0000001c data=0xfffffffb
+PASS read addr=0x0000001c data=0xfffffffb
+PASS scratch1 walking one expected=0xfffffffb actual=0xfffffffb
+MON write addr=0x00000008 data=0x00000004
+MON read addr=0x0000000c data=0x85a55a5a
+PASS read addr=0x0000000c data=0x85a55a5a
+MON write addr=0x00000018 data=0x00000008
+MON read addr=0x00000018 data=0x00000008
+PASS read addr=0x00000018 data=0x00000008
+PASS scratch0 walking one expected=0x00000008 actual=0x00000008
+MON write addr=0x0000001c data=0xfffffff7
+MON read addr=0x0000001c data=0xfffffff7
+PASS read addr=0x0000001c data=0xfffffff7
+PASS scratch1 walking one expected=0xfffffff7 actual=0xfffffff7
+MON write addr=0x00000008 data=0x00000008
+MON read addr=0x0000000c data=0xb5a55a5a
+PASS read addr=0x0000000c data=0xb5a55a5a
+MON write addr=0x00000018 data=0x00000010
+MON read addr=0x00000018 data=0x00000010
+PASS read addr=0x00000018 data=0x00000010
+PASS scratch0 walking one expected=0x00000010 actual=0x00000010
+MON write addr=0x0000001c data=0xffffffef
+MON read addr=0x0000001c data=0xffffffef
+PASS read addr=0x0000001c data=0xffffffef
+PASS scratch1 walking one expected=0xffffffef actual=0xffffffef
+MON write addr=0x00000008 data=0x00000010
+MON read addr=0x0000000c data=0xada55a5a
+PASS read addr=0x0000000c data=0xada55a5a
+MON write addr=0x00000018 data=0x00000020
+MON read addr=0x00000018 data=0x00000020
+PASS read addr=0x00000018 data=0x00000020
+PASS scratch0 walking one expected=0x00000020 actual=0x00000020
+MON write addr=0x0000001c data=0xffffffdf
+MON read addr=0x0000001c data=0xffffffdf
+PASS read addr=0x0000001c data=0xffffffdf
+PASS scratch1 walking one expected=0xffffffdf actual=0xffffffdf
+MON write addr=0x00000008 data=0x00000020
+MON read addr=0x0000000c data=0xa1a55a5a
+PASS read addr=0x0000000c data=0xa1a55a5a
+MON write addr=0x00000018 data=0x00000040
+MON read addr=0x00000018 data=0x00000040
+PASS read addr=0x00000018 data=0x00000040
+PASS scratch0 walking one expected=0x00000040 actual=0x00000040
+MON write addr=0x0000001c data=0xffffffbf
+MON read addr=0x0000001c data=0xffffffbf
+PASS read addr=0x0000001c data=0xffffffbf
+PASS scratch1 walking one expected=0xffffffbf actual=0xffffffbf
+MON write addr=0x00000008 data=0x00000040
+MON read addr=0x0000000c data=0xa7a55a5a
+PASS read addr=0x0000000c data=0xa7a55a5a
+MON write addr=0x00000018 data=0x00000080
+MON read addr=0x00000018 data=0x00000080
+PASS read addr=0x00000018 data=0x00000080
+PASS scratch0 walking one expected=0x00000080 actual=0x00000080
+MON write addr=0x0000001c data=0xffffff7f
+MON read addr=0x0000001c data=0xffffff7f
+PASS read addr=0x0000001c data=0xffffff7f
+PASS scratch1 walking one expected=0xffffff7f actual=0xffffff7f
+MON write addr=0x00000008 data=0x00000080
+MON read addr=0x0000000c data=0xa4a55a5a
+PASS read addr=0x0000000c data=0xa4a55a5a
+MON write addr=0x00000018 data=0x00000100
+MON read addr=0x00000018 data=0x00000100
+PASS read addr=0x00000018 data=0x00000100
+PASS scratch0 walking one expected=0x00000100 actual=0x00000100
+MON write addr=0x0000001c data=0xfffffeff
+MON read addr=0x0000001c data=0xfffffeff
+PASS read addr=0x0000001c data=0xfffffeff
+PASS scratch1 walking one expected=0xfffffeff actual=0xfffffeff
+MON write addr=0x00000008 data=0x00000100
+MON read addr=0x0000000c data=0xa5255a5a
+PASS read addr=0x0000000c data=0xa5255a5a
+MON write addr=0x00000018 data=0x00000200
+MON read addr=0x00000018 data=0x00000200
+PASS read addr=0x00000018 data=0x00000200
+PASS scratch0 walking one expected=0x00000200 actual=0x00000200
+MON write addr=0x0000001c data=0xfffffdff
+MON read addr=0x0000001c data=0xfffffdff
+PASS read addr=0x0000001c data=0xfffffdff
+PASS scratch1 walking one expected=0xfffffdff actual=0xfffffdff
+MON write addr=0x00000008 data=0x00000200
+MON read addr=0x0000000c data=0xa5e55a5a
+PASS read addr=0x0000000c data=0xa5e55a5a
+MON write addr=0x00000018 data=0x00000400
+MON read addr=0x00000018 data=0x00000400
+PASS read addr=0x00000018 data=0x00000400
+PASS scratch0 walking one expected=0x00000400 actual=0x00000400
+MON write addr=0x0000001c data=0xfffffbff
+MON read addr=0x0000001c data=0xfffffbff
+PASS read addr=0x0000001c data=0xfffffbff
+PASS scratch1 walking one expected=0xfffffbff actual=0xfffffbff
+MON write addr=0x00000008 data=0x00000400
+MON read addr=0x0000000c data=0xa5855a5a
+PASS read addr=0x0000000c data=0xa5855a5a
+MON write addr=0x00000018 data=0x00000800
+MON read addr=0x00000018 data=0x00000800
+PASS read addr=0x00000018 data=0x00000800
+PASS scratch0 walking one expected=0x00000800 actual=0x00000800
+MON write addr=0x0000001c data=0xfffff7ff
+MON read addr=0x0000001c data=0xfffff7ff
+PASS read addr=0x0000001c data=0xfffff7ff
+PASS scratch1 walking one expected=0xfffff7ff actual=0xfffff7ff
+MON write addr=0x00000008 data=0x00000800
+MON read addr=0x0000000c data=0xa5b55a5a
+PASS read addr=0x0000000c data=0xa5b55a5a
+MON write addr=0x00000018 data=0x00001000
+MON read addr=0x00000018 data=0x00001000
+PASS read addr=0x00000018 data=0x00001000
+PASS scratch0 walking one expected=0x00001000 actual=0x00001000
+MON write addr=0x0000001c data=0xffffefff
+MON read addr=0x0000001c data=0xffffefff
+PASS read addr=0x0000001c data=0xffffefff
+PASS scratch1 walking one expected=0xffffefff actual=0xffffefff
+MON write addr=0x00000008 data=0x00001000
+MON read addr=0x0000000c data=0xa5ad5a5a
+PASS read addr=0x0000000c data=0xa5ad5a5a
+MON write addr=0x00000018 data=0x00002000
+MON read addr=0x00000018 data=0x00002000
+PASS read addr=0x00000018 data=0x00002000
+PASS scratch0 walking one expected=0x00002000 actual=0x00002000
+MON write addr=0x0000001c data=0xffffdfff
+MON read addr=0x0000001c data=0xffffdfff
+PASS read addr=0x0000001c data=0xffffdfff
+PASS scratch1 walking one expected=0xffffdfff actual=0xffffdfff
+MON write addr=0x00000008 data=0x00002000
+MON read addr=0x0000000c data=0xa5a15a5a
+PASS read addr=0x0000000c data=0xa5a15a5a
+MON write addr=0x00000018 data=0x00004000
+MON read addr=0x00000018 data=0x00004000
+PASS read addr=0x00000018 data=0x00004000
+PASS scratch0 walking one expected=0x00004000 actual=0x00004000
+MON write addr=0x0000001c data=0xffffbfff
+MON read addr=0x0000001c data=0xffffbfff
+PASS read addr=0x0000001c data=0xffffbfff
+PASS scratch1 walking one expected=0xffffbfff actual=0xffffbfff
+MON write addr=0x00000008 data=0x00004000
+MON read addr=0x0000000c data=0xa5a75a5a
+PASS read addr=0x0000000c data=0xa5a75a5a
+MON write addr=0x00000018 data=0x00008000
+MON read addr=0x00000018 data=0x00008000
+PASS read addr=0x00000018 data=0x00008000
+PASS scratch0 walking one expected=0x00008000 actual=0x00008000
+MON write addr=0x0000001c data=0xffff7fff
+MON read addr=0x0000001c data=0xffff7fff
+PASS read addr=0x0000001c data=0xffff7fff
+PASS scratch1 walking one expected=0xffff7fff actual=0xffff7fff
+MON write addr=0x00000008 data=0x00008000
+MON read addr=0x0000000c data=0xa5a45a5a
+PASS read addr=0x0000000c data=0xa5a45a5a
+MON write addr=0x00000018 data=0x00010000
+MON read addr=0x00000018 data=0x00010000
+PASS read addr=0x00000018 data=0x00010000
+PASS scratch0 walking one expected=0x00010000 actual=0x00010000
+MON write addr=0x0000001c data=0xfffeffff
+MON read addr=0x0000001c data=0xfffeffff
+PASS read addr=0x0000001c data=0xfffeffff
+PASS scratch1 walking one expected=0xfffeffff actual=0xfffeffff
+MON write addr=0x00000008 data=0x00010000
+MON read addr=0x0000000c data=0xa5a5da5a
+PASS read addr=0x0000000c data=0xa5a5da5a
+MON write addr=0x00000018 data=0x00020000
+MON read addr=0x00000018 data=0x00020000
+PASS read addr=0x00000018 data=0x00020000
+PASS scratch0 walking one expected=0x00020000 actual=0x00020000
+MON write addr=0x0000001c data=0xfffdffff
+MON read addr=0x0000001c data=0xfffdffff
+PASS read addr=0x0000001c data=0xfffdffff
+PASS scratch1 walking one expected=0xfffdffff actual=0xfffdffff
+MON write addr=0x00000008 data=0x00020000
+MON read addr=0x0000000c data=0xa5a51a5a
+PASS read addr=0x0000000c data=0xa5a51a5a
+MON write addr=0x00000018 data=0x00040000
+MON read addr=0x00000018 data=0x00040000
+PASS read addr=0x00000018 data=0x00040000
+PASS scratch0 walking one expected=0x00040000 actual=0x00040000
+MON write addr=0x0000001c data=0xfffbffff
+MON read addr=0x0000001c data=0xfffbffff
+PASS read addr=0x0000001c data=0xfffbffff
+PASS scratch1 walking one expected=0xfffbffff actual=0xfffbffff
+MON write addr=0x00000008 data=0x00040000
+MON read addr=0x0000000c data=0xa5a57a5a
+PASS read addr=0x0000000c data=0xa5a57a5a
+MON write addr=0x00000018 data=0x00080000
+MON read addr=0x00000018 data=0x00080000
+PASS read addr=0x00000018 data=0x00080000
+PASS scratch0 walking one expected=0x00080000 actual=0x00080000
+MON write addr=0x0000001c data=0xfff7ffff
+MON read addr=0x0000001c data=0xfff7ffff
+PASS read addr=0x0000001c data=0xfff7ffff
+PASS scratch1 walking one expected=0xfff7ffff actual=0xfff7ffff
+MON write addr=0x00000008 data=0x00080000
+MON read addr=0x0000000c data=0xa5a54a5a
+PASS read addr=0x0000000c data=0xa5a54a5a
+MON write addr=0x00000018 data=0x00100000
+MON read addr=0x00000018 data=0x00100000
+PASS read addr=0x00000018 data=0x00100000
+PASS scratch0 walking one expected=0x00100000 actual=0x00100000
+MON write addr=0x0000001c data=0xffefffff
+MON read addr=0x0000001c data=0xffefffff
+PASS read addr=0x0000001c data=0xffefffff
+PASS scratch1 walking one expected=0xffefffff actual=0xffefffff
+MON write addr=0x00000008 data=0x00100000
+MON read addr=0x0000000c data=0xa5a5525a
+PASS read addr=0x0000000c data=0xa5a5525a
+MON write addr=0x00000018 data=0x00200000
+MON read addr=0x00000018 data=0x00200000
+PASS read addr=0x00000018 data=0x00200000
+PASS scratch0 walking one expected=0x00200000 actual=0x00200000
+MON write addr=0x0000001c data=0xffdfffff
+MON read addr=0x0000001c data=0xffdfffff
+PASS read addr=0x0000001c data=0xffdfffff
+PASS scratch1 walking one expected=0xffdfffff actual=0xffdfffff
+MON write addr=0x00000008 data=0x00200000
+MON read addr=0x0000000c data=0xa5a55e5a
+PASS read addr=0x0000000c data=0xa5a55e5a
+MON write addr=0x00000018 data=0x00400000
+MON read addr=0x00000018 data=0x00400000
+PASS read addr=0x00000018 data=0x00400000
+PASS scratch0 walking one expected=0x00400000 actual=0x00400000
+MON write addr=0x0000001c data=0xffbfffff
+MON read addr=0x0000001c data=0xffbfffff
+PASS read addr=0x0000001c data=0xffbfffff
+PASS scratch1 walking one expected=0xffbfffff actual=0xffbfffff
+MON write addr=0x00000008 data=0x00400000
+MON read addr=0x0000000c data=0xa5a5585a
+PASS read addr=0x0000000c data=0xa5a5585a
+MON write addr=0x00000018 data=0x00800000
+MON read addr=0x00000018 data=0x00800000
+PASS read addr=0x00000018 data=0x00800000
+PASS scratch0 walking one expected=0x00800000 actual=0x00800000
+MON write addr=0x0000001c data=0xff7fffff
+MON read addr=0x0000001c data=0xff7fffff
+PASS read addr=0x0000001c data=0xff7fffff
+PASS scratch1 walking one expected=0xff7fffff actual=0xff7fffff
+MON write addr=0x00000008 data=0x00800000
+MON read addr=0x0000000c data=0xa5a55b5a
+PASS read addr=0x0000000c data=0xa5a55b5a
+MON write addr=0x00000018 data=0x01000000
+MON read addr=0x00000018 data=0x01000000
+PASS read addr=0x00000018 data=0x01000000
+PASS scratch0 walking one expected=0x01000000 actual=0x01000000
+MON write addr=0x0000001c data=0xfeffffff
+MON read addr=0x0000001c data=0xfeffffff
+PASS read addr=0x0000001c data=0xfeffffff
+PASS scratch1 walking one expected=0xfeffffff actual=0xfeffffff
+MON write addr=0x00000008 data=0x01000000
+MON read addr=0x0000000c data=0xa5a55ada
+PASS read addr=0x0000000c data=0xa5a55ada
+MON write addr=0x00000018 data=0x02000000
+MON read addr=0x00000018 data=0x02000000
+PASS read addr=0x00000018 data=0x02000000
+PASS scratch0 walking one expected=0x02000000 actual=0x02000000
+MON write addr=0x0000001c data=0xfdffffff
+MON read addr=0x0000001c data=0xfdffffff
+PASS read addr=0x0000001c data=0xfdffffff
+PASS scratch1 walking one expected=0xfdffffff actual=0xfdffffff
+MON write addr=0x00000008 data=0x02000000
+MON read addr=0x0000000c data=0xa5a55a1a
+PASS read addr=0x0000000c data=0xa5a55a1a
+MON write addr=0x00000018 data=0x04000000
+MON read addr=0x00000018 data=0x04000000
+PASS read addr=0x00000018 data=0x04000000
+PASS scratch0 walking one expected=0x04000000 actual=0x04000000
+MON write addr=0x0000001c data=0xfbffffff
+MON read addr=0x0000001c data=0xfbffffff
+PASS read addr=0x0000001c data=0xfbffffff
+PASS scratch1 walking one expected=0xfbffffff actual=0xfbffffff
+MON write addr=0x00000008 data=0x04000000
+MON read addr=0x0000000c data=0xa5a55a7a
+PASS read addr=0x0000000c data=0xa5a55a7a
+MON write addr=0x00000018 data=0x08000000
+MON read addr=0x00000018 data=0x08000000
+PASS read addr=0x00000018 data=0x08000000
+PASS scratch0 walking one expected=0x08000000 actual=0x08000000
+MON write addr=0x0000001c data=0xf7ffffff
+MON read addr=0x0000001c data=0xf7ffffff
+PASS read addr=0x0000001c data=0xf7ffffff
+PASS scratch1 walking one expected=0xf7ffffff actual=0xf7ffffff
+MON write addr=0x00000008 data=0x08000000
+MON read addr=0x0000000c data=0xa5a55a4a
+PASS read addr=0x0000000c data=0xa5a55a4a
+MON write addr=0x00000018 data=0x10000000
+MON read addr=0x00000018 data=0x10000000
+PASS read addr=0x00000018 data=0x10000000
+PASS scratch0 walking one expected=0x10000000 actual=0x10000000
+MON write addr=0x0000001c data=0xefffffff
+MON read addr=0x0000001c data=0xefffffff
+PASS read addr=0x0000001c data=0xefffffff
+PASS scratch1 walking one expected=0xefffffff actual=0xefffffff
+MON write addr=0x00000008 data=0x10000000
+MON read addr=0x0000000c data=0xa5a55a52
+PASS read addr=0x0000000c data=0xa5a55a52
+MON write addr=0x00000018 data=0x20000000
+MON read addr=0x00000018 data=0x20000000
+PASS read addr=0x00000018 data=0x20000000
+PASS scratch0 walking one expected=0x20000000 actual=0x20000000
+MON write addr=0x0000001c data=0xdfffffff
+MON read addr=0x0000001c data=0xdfffffff
+PASS read addr=0x0000001c data=0xdfffffff
+PASS scratch1 walking one expected=0xdfffffff actual=0xdfffffff
+MON write addr=0x00000008 data=0x20000000
+MON read addr=0x0000000c data=0xa5a55a5e
+PASS read addr=0x0000000c data=0xa5a55a5e
+MON write addr=0x00000018 data=0x40000000
+MON read addr=0x00000018 data=0x40000000
+PASS read addr=0x00000018 data=0x40000000
+PASS scratch0 walking one expected=0x40000000 actual=0x40000000
+MON write addr=0x0000001c data=0xbfffffff
+MON read addr=0x0000001c data=0xbfffffff
+PASS read addr=0x0000001c data=0xbfffffff
+PASS scratch1 walking one expected=0xbfffffff actual=0xbfffffff
+MON write addr=0x00000008 data=0x40000000
+MON read addr=0x0000000c data=0xa5a55a58
+PASS read addr=0x0000000c data=0xa5a55a58
+MON write addr=0x00000018 data=0x80000000
+MON read addr=0x00000018 data=0x80000000
+PASS read addr=0x00000018 data=0x80000000
+PASS scratch0 walking one expected=0x80000000 actual=0x80000000
+MON write addr=0x0000001c data=0x7fffffff
+MON read addr=0x0000001c data=0x7fffffff
+PASS read addr=0x0000001c data=0x7fffffff
+PASS scratch1 walking one expected=0x7fffffff actual=0x7fffffff
+MON write addr=0x00000008 data=0x80000000
+MON read addr=0x0000000c data=0xa5a55a5b
+PASS read addr=0x0000000c data=0xa5a55a5b
+[seq_walk_ones] PASS
+Result: 1/1 tests passing
+FINAL PASS
+sim/tb_top.sv:192: $finish called at 7825000 (1ps)
+
+
+===== rand_test PASS =====
+VCD info: dumpfile results/waveform.vcd opened for output.
+[rand_test] START
+MON write addr=0x00000008 data=0x0484d609
+MON read addr=0x0000001c data=0x00000000
+PASS read addr=0x0000001c data=0x00000000
+MON read addr=0x00000014 data=0x00000000
+PASS read addr=0x00000014 data=0x00000000
+MON write addr=0x0000001c data=0x86d7cd0d
+MON write addr=0x0000001c data=0xf6d457ed
+MON write addr=0x0000001c data=0x633724c6
+MON read addr=0x00000008 data=0x0484d609
+PASS read addr=0x00000008 data=0x0484d609
+MON read addr=0x0000001c data=0x633724c6
+PASS read addr=0x0000001c data=0x633724c6
+MON write addr=0x0000001c data=0xf93069f2
+MON write addr=0x00000010 data=0x62ca4ec5
+MON write addr=0x00000014 data=0x00000001
+MON read addr=0x0000000c data=0x00000000
+PASS read addr=0x0000000c data=0x00000000
+MON write addr=0x00000000 data=0x00000010
+MON write addr=0x00000008 data=0x4b203e96
+MON read addr=0x00000014 data=0x00000000
+PASS read addr=0x00000014 data=0x00000000
+MON read addr=0x0000001c data=0xf93069f2
+PASS read addr=0x0000001c data=0xf93069f2
+MON read addr=0x00000008 data=0x4b203e96
+PASS read addr=0x00000008 data=0x4b203e96
+MON write addr=0x0000001c data=0x67c572cf
+MON read addr=0x0000001c data=0x67c572cf
+PASS read addr=0x0000001c data=0x67c572cf
+MON write addr=0x00000010 data=0xf968bdf2
+MON write addr=0x0000001c data=0x6c4b34d8
+MON write addr=0x00000008 data=0xf5c50deb
+MON write addr=0x0000001c data=0xd71513ae
+MON write addr=0x00000000 data=0x00000001
+MON read addr=0x0000001c data=0xd71513ae
+PASS read addr=0x0000001c data=0xd71513ae
+MON read addr=0x0000000c data=0x7215f9f5
+PASS read addr=0x0000000c data=0x7215f9f5
+MON write addr=0x00000018 data=0x8aaa4b15
+MON read addr=0x0000001c data=0xd71513ae
+PASS read addr=0x0000001c data=0xd71513ae
+MON write addr=0x0000001c data=0xcfa1559f
+MON read addr=0x00000000 data=0x00000001
+PASS read addr=0x00000000 data=0x00000001
+MON read addr=0x0000001c data=0xcfa1559f
+PASS read addr=0x0000001c data=0xcfa1559f
+MON write addr=0x00000014 data=0x00000001
+MON read addr=0x00000000 data=0x00000001
+PASS read addr=0x00000000 data=0x00000001
+MON read addr=0x00000004 data=0x00000001
+PASS read addr=0x00000004 data=0x00000001
+MON write addr=0x0000001c data=0x612ccec2
+MON write addr=0x0000001c data=0x9ef2ed3d
+MON write addr=0x00000010 data=0xb6e5816d
+MON read addr=0x0000001c data=0x9ef2ed3d
+PASS read addr=0x0000001c data=0x9ef2ed3d
+MON read addr=0x0000001c data=0x9ef2ed3d
+PASS read addr=0x0000001c data=0x9ef2ed3d
+MON write addr=0x0000001c data=0xa48b4b49
+MON read addr=0x0000001c data=0xa48b4b49
+PASS read addr=0x0000001c data=0xa48b4b49
+MON write addr=0x00000010 data=0x471a0c8e
+MON write addr=0x00000000 data=0x00000010
+MON read addr=0x0000000c data=0x00000000
+PASS read addr=0x0000000c data=0x00000000
+MON read addr=0x0000000c data=0x00000000
+PASS read addr=0x0000000c data=0x00000000
+MON read addr=0x0000001c data=0xa48b4b49
+PASS read addr=0x0000001c data=0xa48b4b49
+MON read addr=0x0000000c data=0x00000000
+PASS read addr=0x0000000c data=0x00000000
+MON write addr=0x0000001c data=0x94cfc129
+MON read addr=0x00000008 data=0xf5c50deb
+PASS read addr=0x00000008 data=0xf5c50deb
+MON read addr=0x00000014 data=0x00000000
+PASS read addr=0x00000014 data=0x00000000
+MON read addr=0x0000001c data=0x94cfc129
+PASS read addr=0x0000001c data=0x94cfc129
+MON write addr=0x00000010 data=0x95090b2a
+MON read addr=0x0000001c data=0x94cfc129
+PASS read addr=0x0000001c data=0x94cfc129
+MON write addr=0x00000000 data=0x00000079
+MON read addr=0x0000001c data=0x94cfc129
+PASS read addr=0x0000001c data=0x94cfc129
+MON write addr=0x00000014 data=0x00000002
+MON write addr=0x00000010 data=0xbcd18779
+MON write addr=0x0000001c data=0xc9c65d93
+MON write addr=0x0000001c data=0xedcb69db
+MON read addr=0x0000001c data=0xedcb69db
+PASS read addr=0x0000001c data=0xedcb69db
+MON read addr=0x00000018 data=0x8aaa4b15
+PASS read addr=0x00000018 data=0x8aaa4b15
+MON write addr=0x00000000 data=0x00000049
+MON write addr=0x0000001c data=0xfbd261f7
+MON read addr=0x00000010 data=0xbcd18779
+PASS read addr=0x00000010 data=0xbcd18779
+MON write addr=0x00000000 data=0x00000011
+MON read addr=0x00000018 data=0x8aaa4b15
+PASS read addr=0x00000018 data=0x8aaa4b15
+MON write addr=0x00000000 data=0x00000079
+MON read addr=0x00000010 data=0xbcd18779
+PASS read addr=0x00000010 data=0xbcd18779
+MON write addr=0x00000000 data=0x00000019
+MON write addr=0x00000010 data=0x39f50473
+MON write addr=0x0000001c data=0xfd4779fa
+MON read addr=0x00000008 data=0xf5c50deb
+PASS read addr=0x00000008 data=0xf5c50deb
+MON read addr=0x0000001c data=0xfd4779fa
+PASS read addr=0x0000001c data=0xfd4779fa
+MON write addr=0x0000001c data=0x93259f26
+MON write addr=0x0000001c data=0xee5f0fdc
+MON write addr=0x0000001c data=0xbf5a9b7e
+MON read addr=0x0000001c data=0xbf5a9b7e
+PASS read addr=0x0000001c data=0xbf5a9b7e
+MON read addr=0x00000008 data=0xf5c50deb
+PASS read addr=0x00000008 data=0xf5c50deb
+MON read addr=0x0000001c data=0xbf5a9b7e
+PASS read addr=0x0000001c data=0xbf5a9b7e
+MON read addr=0x0000001c data=0xbf5a9b7e
+PASS read addr=0x0000001c data=0xbf5a9b7e
+MON write addr=0x0000001c data=0x1ab48835
+MON read addr=0x0000001c data=0x1ab48835
+PASS read addr=0x0000001c data=0x1ab48835
+MON read addr=0x00000000 data=0x00000009
+PASS read addr=0x00000000 data=0x00000009
+MON read addr=0x0000000c data=0x7215f9f5
+PASS read addr=0x0000000c data=0x7215f9f5
+MON write addr=0x00000000 data=0x00000020
+MON write addr=0x0000001c data=0x50ca8ca1
+MON write addr=0x00000018 data=0x4fd6c09f
+MON write addr=0x00000000 data=0x00000041
+MON write addr=0x00000000 data=0x00000039
+MON write addr=0x00000000 data=0x00000009
+MON read addr=0x0000001c data=0x50ca8ca1
+PASS read addr=0x0000001c data=0x50ca8ca1
+MON write addr=0x0000001c data=0xe216abc4
+MON read addr=0x0000001c data=0xe216abc4
+PASS read addr=0x0000001c data=0xe216abc4
+MON write addr=0x0000001c data=0x43339086
+MON write addr=0x00000018 data=0x99452132
+MON read addr=0x0000001c data=0x43339086
+PASS read addr=0x0000001c data=0x43339086
+MON write addr=0x0000001c data=0xd4a879a9
+MON read addr=0x0000001c data=0xd4a879a9
+PASS read addr=0x0000001c data=0xd4a879a9
+MON read addr=0x0000000c data=0x7215f9f5
+PASS read addr=0x0000000c data=0x7215f9f5
+MON read addr=0x0000001c data=0xd4a879a9
+PASS read addr=0x0000001c data=0xd4a879a9
+MON write addr=0x00000018 data=0x55aa0123
+MON read addr=0x00000018 data=0x55aa0123
+PASS read addr=0x00000018 data=0x55aa0123
+PASS random scratch readback expected=0x55aa0123 actual=0x55aa0123
+MON write addr=0x00000010 data=0x00000001
+MON write addr=0x00000000 data=0x00000001
+MON write addr=0x00000008 data=0x13572468
+PASS random irq event expected=0x00000001 actual=0x00000001
+MON write addr=0x00000014 data=0x00000001
+[rand_test] PASS
+Result: 1/1 tests passing
+FINAL PASS
+sim/tb_top.sv:192: $finish called at 4435000 (1ps)
+
+
+Result: 5/5 tests passing

@@ -1,0 +1,20 @@
+AXI4-Lite Register Bank Coverage Report
+======================================
+Reads observed: 49
+Writes observed: 57
+All register addresses accessed: YES
+Read operation observed: YES
+Write operation observed: YES
+IRQ behavior observed: YES
+Scratch readback passed: YES
+
+Register index 0 accessed: YES
+Register index 1 accessed: YES
+Register index 2 accessed: YES
+Register index 3 accessed: YES
+Register index 4 accessed: YES
+Register index 5 accessed: YES
+Register index 6 accessed: YES
+Register index 7 accessed: YES
+
+Coverage goals hit: 5/5
