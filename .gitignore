@@ -1,6 +1,9 @@
-results/*.vvp
-results/*.vcd
-results/*.txt
-results/*.csv
-*.log
+# macOS
 .DS_Store
+
+# compiled simulation outputs
+*.vvp
+results/*.vvp
+
+# temporary waveform/build junk if needed
+*.log
