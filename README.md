@@ -79,6 +79,12 @@ Generated result files:
 - `results/coverage_report.txt`
 - `results/waveform.vcd`
 
+## Example Waveform
+
+The waveform below shows AXI4-Lite write and read transactions captured from the verification testbench.
+
+![AXI4-Lite waveform](docs/waveform_example.png)
+
 ## File Guide
 
 - `src/axi_regbank.sv`: AXI4-Lite register bank DUT.
